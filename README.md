@@ -17,7 +17,10 @@ Following this you can pull in the code from these examples by using:
 git remote add examples https://github.com/gssOpenShiftsupportExamples/JavaSample.git
 git fetch examples
 git checkout master; git merge examples/master
+git push
 ```
+
+You can then navigate to http://APP_NAME-NAMESPACE.rhcloud.com/examle/ to see this samle in action. 
 
 =======
 What these example demonstrates
