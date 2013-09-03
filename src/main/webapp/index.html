@@ -30,7 +30,7 @@
     -webkit-text-shadow: 2px 2px 2px black;
     text-shadow: -1px -1px 0 black;
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
-    background: #CC0000;
+    background: #336699;
     width: 22.5em;
     margin: 1em -2em;
     padding: .3em 0 .3em 1.5em;
@@ -122,61 +122,40 @@
     <div class="brand-text"><strong>Open</strong>Shift</div>
   </a>
   <h1>
-    Welcome to OpenShift, JBossEAP6.0 Cartridge
+    GSS OpenShift, JBoss EAP 6.x Example
   </h1>
   <p>
-    Place your application here
+    This is a sample applicaiton that is use to demonstrate the how to use OpenShift and Java to build / a simple web application. 
   </p>
   <p>
-    In order to commit to your new project, go to your projects git repo  (created with the rhc app create command) directory.
+    In order to see this page you you successfuly followed the <a href="https://github.com/gssOpenShiftsupportExamples/JavaSample/blob/master/README.md">JavaSample</a> created by GSS OpenShift's Sepcalty Based Routing Group. 
   </p>
-  <p>
-    For example, if you named your application myfirstapp (by passing in -a myfirstapp to the rhc app create command),
-      you would find the contents of this app located under myfirstapp/src/main/webapp. You can edit that and push your
-      changes from the myfirstapp directory by running:
+
+<h1>What is next?</h1>
+
+<h2>Change the version of Java</h2>
+  <p>To continue the learning about Java applications with JBoss on OpenShift we are now going to switch the version of Java that JBoss is using. To start we will be using a modified version of the shiped JBoss debugging JSP that is shiped with the JBoss EAP 6 cartridge. 
   </p>
-  <pre>
-    git commit -a -m 'Some commit message'
+  <p>This page shows information about the server environment including memory pools and the JVM version by loading this information into a <a href="snoop.jsp">JSP page</a>, to make it simple to read and comprehend.
+  </p>
+  <p>To best demonstrate this start by viewing the modified <a href="snoop.jsp">JSP page</a> that is supplied with this example. You should see that it shows a JVM version.</p>
+  <p>After viewing this and noticing the Java Version to be <bold>Java 7</bold> we will change this by following <a href="https://access.redhat.com/site/solutions/397533">knowlade base article 397533</a>. 
+    <pre>
+    rm .openshift/markers/java7  OR   del .openshift\markers\java7
+    git commit -a -m "Remove Java 7 marker"
     git push
-  </pre>
-  <p>
-    Then reload this page.
+    </pre>
   </p>
-  <p>See the myfirstapp/README file for more information on the options for deploying applications.</p>
-
-
-<h2>Sample Applications</h2>
-<p>To get started you can either modify the default war or try one of these samples:
-  <ul>
-    <li><a href="https://github.com/openshift/kitchensink-example">https://github.com/openshift/kitchensink-example</a> this quickstart showcases some of the exciting Java EE6 features available on JBoss AS 7.1.</li>
-    <li><a href="https://github.com/openshift/kitchensink-html5-mobile-example">https://github.com/openshift/kitchensink-html5-mobile-example</a> based on kitchensink (above), but with an HTML5 client that displays great on a PC or mobile device.</li>
-    <li><a href="https://github.com/openshift/tweetstream-example">https://github.com/openshift/tweetstream-example</a> a TweetStream example</li>
-  </ul>
-  
-  <h4>Example usage:</h4>
-  <pre>
-  cd kitchensink
-  git remote add upstream -m master git://github.com/openshift/kitchensink-example.git
-  git pull -s recursive -X theirs upstream master
-  </pre>
-</p>
-
-<h2>Debugging</h2>
-<p>View debugging information about the server environment including memory pools by loading this JSP page: <a href="snoop.jsp">Debug</a></p>
-
-  <h2>
-    What's next?
-  </h2>
-  <ul>
-    <li>
-      Why not visit us at <a href="http://www.openshift.com">http://www.openshift.com</a>, or
-    </li>
-    <li>
-      You could get help in the <a href="http://www.openshift.com/forums/openshift">OpenShift forums</a>, or
-    </li>
-    <li>
-      You're welcome to come chat with us in our IRC channel at #openshift on freenode.net
-    </li>
-  </ul>
+<h2>Adding another Application to the Server</h2>
+  <p>In addition to being able to make changes to the an application and being able to build the code from scratch using maven you may also need to deploy supporting applications ro just depoy an application as its own with out a maven build. This section will demonstrate how to make this hapen with your git repostiroy. 
+  </p>
+  <p>To demonstrate how to deploy an second application or an application with out having to build it from source simply follow these instructions. 
+    <pre>
+    cd deployments/
+    wget http://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war
+    git add deployments/sample.war
+    git push 
+    </pre>
+  </p>
 </body>
 </html>

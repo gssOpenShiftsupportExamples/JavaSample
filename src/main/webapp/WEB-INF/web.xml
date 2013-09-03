@@ -14,6 +14,14 @@
                   <servlet-name>health</servlet-name>
                   <url-pattern>/health</url-pattern>
          </servlet-mapping>
-         
-</web-app>
 
+         <servlet>
+             <servlet-name>sample</servlet-name>
+             <servlet-class>src.main.java.Sample</servlet-class>
+         </servlet>
+ 
+         <servlet-mapping>
+             <servlet-name>sample</servlet-name>
+             <url-pattern>/ExampleServlet</url-pattern>
+         </servlet-mapping>
+</web-app>
