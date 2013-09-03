@@ -10,8 +10,9 @@
 <H1>WebApp JSP Snoop page</H1>
 <img src="images/jbosscorp_logo.png">
 
+<h2 align="right"> JVM Version: <%= System.getProperty("java.version") %></h2>
+
 <h2>JVM Memory Monitor</h2>
- 
  
 <table border="0" width="100%">
  
