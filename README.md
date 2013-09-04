@@ -18,9 +18,10 @@ Following this you can pull in the code from these examples by using:
 ```
 git remote add examples https://github.com/gssOpenShiftsupportExamples/JavaSample.git
 git fetch examples
-git checkout master; git merge examples/master
+git checkout master; git merge --strategy=recursive -X theirs examples/master
 git push
 ```
+- **Note:** Then change in the merge strategy is so you can avoid conflicts. 
 
 You can then navigate to **http://APP_NAME-NAMESPACE.rhcloud.com/examle/** to see this samle in action.
 
@@ -57,7 +58,7 @@ To see what `maven` will do when you push the code to the gear (or to simply tes
 build is done. 
 
 ```
-mvn install -P openshift
+mvn -e clean package -Popenshift -DskipTests
 ```
 
 The [maven](https://github.com/gssOpenShiftsupportExamples/JavaSample/blob/master/pom.xml#L65) command (as demonstraged 
