@@ -23,7 +23,7 @@ git push
 ```
 - **Note:** Then change in the merge strategy is so you can avoid conflicts. 
 
-You can then navigate to **http://APP_NAME-NAMESPACE.rhcloud.com/examle/** to see this samle in action.
+You can then navigate to **http://APP_NAME-NAMESPACE.rhcloud.com/example/** to see this samle in action.
 
 What this example demonstrates
 ==========
@@ -50,7 +50,7 @@ The reason this is demonstrated in this manner is so that you can see the differ
 source vs an example deployed as a binary (thus demonstrating 2 of the above objectives). 
 
 For more information on this 
-see the deployed war at: **http://APP_NAME-NAMESPACE.rhcloud.com/examle/** as it explains how to continue this example
+see the deployed war at: **http://APP_NAME-NAMESPACE.rhcloud.com/example/** as it explains how to continue this example
 and deploy a binary artifact. 
 
 To see what `maven` will do when you push the code to the gear (or to simply test code modifications localy) simply run 
