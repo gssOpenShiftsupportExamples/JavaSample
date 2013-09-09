@@ -37,7 +37,7 @@ public class Sample extends HttpServlet {
     out.println("<body>");
 
     out.println("<h1>Sample Clustered Servelet</h1><br/>");
-    out.println("Session ID: " + SessionID + "<br/>"); 
+    out.println("Session ID: " + SessionID + " | Server IP:" + request.getLocalAddr() + "<br/>"); 
 
     SampleObj sample = getSessionObj(session); 
 
