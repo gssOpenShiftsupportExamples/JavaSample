@@ -67,3 +67,16 @@ example.war file. It then places this war file into the deployments direcory of 
 completing the build. 
 
 - **Note:** The built war file is not checked-in or commited to the git repository. 
+
+In addition to providing you with a simple build and demonstraing how the 
+[WAR](https://github.com/gssOpenShiftsupportExamples/JavaSample/blob/master/src/main/webapp/WEB-INF/web.xml#L18-L26) 
+maps to the [Sample Servlet](https://github.com/gssOpenShiftsupportExamples/JavaSample/blob/master/src/main/java/Sample.java) 
+this example also provide you a demonstration on how the **WAR** can be 
+[marked](https://github.com/gssOpenShiftsupportExamples/JavaSample/blob/master/src/main/webapp/WEB-INF/web.xml#L8) as 
+a clustered application. 
+
+When an application is 
+[marked](https://github.com/gssOpenShiftsupportExamples/JavaSample/blob/master/src/main/webapp/WEB-INF/web.xml#L8) 
+in this way the container can be 
+[clustered](https://github.com/openshift/origin-server/blob/master/cartridges/openshift-origin-cartridge-jbosseap/versions/shared/standalone/configuration/standalone.xml#L303-L337) 
+with other containers to handle more request or provide fail over functionality. 
