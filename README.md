@@ -80,3 +80,46 @@ When an application is
 in this way the container can be 
 [clustered](https://github.com/openshift/origin-server/blob/master/cartridges/openshift-origin-cartridge-jbosseap/versions/shared/standalone/configuration/standalone.xml#L303-L337) 
 with other containers to handle more request or provide fail over functionality. 
+
+To see this in action you would want to create a clustered JBoss application: 
+
+```
+rhc create-app -a jbossexamples -t jbosseap-6 -s
+```
+By default OpenShift scales applicatoins based on load (so unless you are generating a large amount of load you will 
+need to disable this feature and manualy scale your application). 
+
+You can `Disable Auto Scaling` by completing the following in your git repo: 
+
+```
+touch .openshift/markers/disable_auto_scaling  
+git add .openshift/markers/disable_auto_scaling  
+git commit -m "Disabling Auto Scaling, Switching to Manual Scaling"  
+git push  
+```
+
+You can then `Manually Scale your GEAR` by running the following commands: 
+
+```
+rhc ssh APPNAME  
+rhc cartridge scale jbosseap-6 -a APP_NAME NUMBER_OF_GEARS
+```
+
+Once you have scaled your app you can see how many gears are active by running the following: 
+
+```
+rhc app show $APP_NAME --gears | tail -3
+```
+
+You can also see what `GEAR` you get serviced by (by looking at the Servlet). Simply look at the IP value
+on the Clustered Servlet: **http://app_name-namespace-rhcloud.com/example/ExampleServlet**
+
+To kill the JBoss Server that serviced your request you can run (be sure to fill in the `APP_NAME` and `IP` place holders:
+
+```
+IP="xxx.xxx.xxx"; APP_NAME="NAME"; for x in $(rhc app show $APP_NAME --gears | tail -3 | awk '{print $7}'); do ssh $x "if [[ $IP == \$OPENSHIFT_JBOSSEAP_IP ]]; then pkill java;fi;"; done;
+```
+
+By simply refresshing the Clustered Servlet: **http://app_name-namespace-rhcloud.com/example/ExampleServlet** 
+you can see that the `SessionID` stays the same but the `IP` changes to one of your other JBoss gears. This demonstrates 
+that the refreshed request was serviced by another JBoss sever hower the content of your session was maintain. 
