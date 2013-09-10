@@ -5,7 +5,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false">
-
+         <distributable/> <!--This makes it so the App can be clustered --> 
          <servlet>
                   <servlet-name>health</servlet-name>
                   <jsp-file>/health.jsp</jsp-file>
